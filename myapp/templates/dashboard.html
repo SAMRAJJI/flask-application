@@ -1,0 +1,45 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <header class="flex justify-between p-4 bg-white dark:bg-gray-900 shadow-md">
+        <div class="text-xl font-bold text-gray-800 dark:text-gray-200">
+            My dashboard
+        </div>
+        <nav class="hidden md:flex space-x-4">
+            <a href="{{url_for('views.home')}}" class="hover:text-blue-500">home</a>
+            <a href="">profile</a>
+        </nav>
+    </header>
+    <div class="flex ">
+      <aside class="hidden md:flex flex-col w-64 bg-gray-100 p-4 space-y-4 h-screen">
+          <a href=""> analytics </a>
+      </aside>
+      <main class="p-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-4 bg-white dark:bg-gray-800 shadow-lg round-lg hover:shadow-xl transition">
+            <div class="text-sm font-semibold text-gray-500 dark:text-gray-400">User</div>
+            <div class="mt-3 text-2xl font-bold text-gray-500 dark:text-gray-400">1,234</div>
+          </div>
+          <div class="p-4 bg-white dark:bg-gray-800 shadow-lg round-lg hover:shadow-xl transition">
+            <div class="text-sm font-semibold text-gray-500 dark:text-gray-400">Revenue</div>
+            <div class="mt-3 text-2xl font-bold text-gray-500 dark:text-gray-400">$12,345</div>
+          </div>
+          <div class="p-4 bg-white dark:bg-gray-800 shadow-lg round-lg hover:shadow-xl transition">
+            <div class="text-sm font-semibold text-gray-500 dark:text-gray-400">Orders</div>
+            <div class="mt-3 text-2xl font-bold text-gray-500 dark:text-gray-400">345</div>
+          </div>
+          <div class="p-4 bg-white dark:bg-gray-800 shadow-lg round-lg hover:shadow-xl transition">
+            <div class="text-sm font-semibold text-gray-500 dark:text-gray-400">Feedback</div>
+            <div class="mt-3 text-2xl font-bold text-gray-500 dark:text-gray-400">56</div>
+          </div>
+      </main>
+    </div>
+
+  </body>
+</html>

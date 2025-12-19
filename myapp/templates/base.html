@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="home">SR APP</a>
+        <a class="navbar-brand" href="{{url_for('views.home')}}">SR APP</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,19 +17,25 @@
         
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="home">Home</a>
+            <a class="nav-link active" aria-current="page" href="{{url_for('views.home')}}">Home</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{url_for('views.dashboard')}}">Dashboard</a>
+            </li>
+            <a class="nav-link active" aria-current="page" href="{{url_for('auth.logout')}}">logout</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="sigin">sigin</a>
+            {% else %}
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{url_for('auth.sigup')}}">sigin</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="{{url_for('auth.login')}}">login</a>
             </li>
             <li class="nav-item dropdown">
-            <a class="nav-link active" aria-current="page" href="{{url_for('auth.logout')}}">logout</a>
-            </li>
-            <li class="nav-item">
- 
+            {% endif %}
+        </ul>
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
             <button class="btn btn-outline-success" type="submit">Search</button>
@@ -41,16 +47,16 @@
     {% if message %}
         {% for c, m in message %}
         {% if c == 'error' %}
-        <div class="alert alert-danger alter-dismissable fade show" role="alert">
+        <div class="alert alert-danger alert-dismissable fade show" role="alert">
             {{m}}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% else %}
         <div class="alert alert-success alter-dismissable fade show" role="alert">
             {{m}}
-            <button type="button" class="close", data-dismiss="alert">
+             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">
-                    &times;
+
                 </span>
             </button>
         </div>
