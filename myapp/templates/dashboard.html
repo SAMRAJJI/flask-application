@@ -16,30 +16,72 @@
             <a href="">profile</a>
         </nav>
     </header>
-    <div class="flex ">
+    <div class="flex">
       <aside class="hidden md:flex flex-col w-64 bg-gray-100 p-4 space-y-4 h-screen">
-          <a href=""> analytics </a>
+          <a href=""> analytics 1 </a>
       </aside>
-      <main class="p-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="p-4 bg-white dark:bg-gray-800 shadow-lg round-lg hover:shadow-xl transition">
-            <div class="text-sm font-semibold text-gray-500 dark:text-gray-400">User</div>
-            <div class="mt-3 text-2xl font-bold text-gray-500 dark:text-gray-400">1,234</div>
+      <main class="p-4 w-full">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 w-fit mx-auto">
+          <div class="p-4 bg-white dark:bg-gray-800 shadow-lg round-lg hover:shadow-xl transition bg-gradient-to-br from-indigo-500 to-indigo-400">
+            <div class="text-sm font-semibold text-white dark:text-gray-800">User</div>
+            <div class="mt-3 text-2xl font-bold text-white dark:text-gray-200">1,234</div>
           </div>
-          <div class="p-4 bg-white dark:bg-gray-800 shadow-lg round-lg hover:shadow-xl transition">
-            <div class="text-sm font-semibold text-gray-500 dark:text-gray-400">Revenue</div>
-            <div class="mt-3 text-2xl font-bold text-gray-500 dark:text-gray-400">$12,345</div>
+          <div class="p-4 bg-white dark:bg-gray-800 shadow-lg round-lg hover:shadow-xl transition bg-gradient-to-br from-indigo-500 to-indigo-400">
+            <div class="text-sm font-semibold text-white dark:text-gray-800">Revenue</div>
+            <div class="mt-3 text-2xl font-bold text-white dark:text-gray-200">$12,345</div>
           </div>
-          <div class="p-4 bg-white dark:bg-gray-800 shadow-lg round-lg hover:shadow-xl transition">
-            <div class="text-sm font-semibold text-gray-500 dark:text-gray-400">Orders</div>
-            <div class="mt-3 text-2xl font-bold text-gray-500 dark:text-gray-400">345</div>
+          <div class="p-4 bg-white dark:bg-gray-800 shadow-lg round-lg hover:shadow-xl transition bg-gradient-to-br from-indigo-500 to-indigo-400">
+            <div class="text-sm font-semibold text-white dark:text-gray-800">Orders</div>
+            <div class="mt-3 text-2xl font-bold text-white dark:text-gray-200">345</div>
           </div>
-          <div class="p-4 bg-white dark:bg-gray-800 shadow-lg round-lg hover:shadow-xl transition">
-            <div class="text-sm font-semibold text-gray-500 dark:text-gray-400">Feedback</div>
-            <div class="mt-3 text-2xl font-bold text-gray-500 dark:text-gray-400">56</div>
+          <div class="p-4 bg-white dark:bg-gray-800 shadow-lg round-lg hover:shadow-xl transition bg-gradient-to-br from-indigo-500 to-indigo-400">
+            <div class="text-sm font-semibold txt-white dark:text-gray-800">Feedback</div>
+            <div class="mt-3 text-2xl font-bold text-white dark:text-gray-200">56</div>
+          </div>
+
+          <div class="mt-6">
+            <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+              <thead>
+                <tr class="text-left border-b border-gray-200 dark:border-gray-700">
+                  <th class="p-3 text-gray-700 dark:text-gray-700">Oder ID</th>
+                  <th class="p-3 text-gray-700 dark:text-gray-700">Customer</th>
+                  <th class="p-3 text-gray-700 dark:text-gray-700">Status</th>
+                  <th class="p-3 text-gray-700 dark:text-gray-700"> Amount</th>
+                </tr>
+                <tbody>
+                  <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:bg-gray-700">
+                    <td class="p-3">#001</td>
+                    <td class="p-3">samrajji</td>
+                    <td class="p-3">completed</td>
+                    <td class="p-3">$100</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:bg-gray-700">
+                    <td class="p-3">#002</td>
+                    <td class="p-3">vel</td>
+                    <td class="p-3">completed</td>
+                    <td class="p-3">$100</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:bg-gray-700">
+                    <td class="p-3">#003</td>
+                    <td class="p-3">bala</td>
+                    <td class="p-3">completed</td>
+                    <td class="p-3">$100</td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
           </div>
       </main>
     </div>
-
+    <footer class="flex flex-col items-center md:flex-row justify-between p-4 bg-white dark:bg-gray-800 shadow-inner">
+      <div class="text-gray-600 dark:text-gray-300 texr-3sm">
+        @2025 dashboard 
+      </div>
+      <div class="flex space-x-4 mt-2">
+        <a href="" class="text-blue-500">Privacy</a>
+        <a href="" class="text-blue-500">Terms</a>
+        <a href="" class="text-blue-500">Contact</a>
+      </div>
+    </footer>
   </body>
 </html>
