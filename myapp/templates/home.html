@@ -1,2 +1,52 @@
-{% extends "base.html" %}
-{% block title %}Home{% endblock %}
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+
+
+<body>
+    <img class="image_gradient" src="{{url_for('static', filename= 'images/gradient.png')}}" alt="gradient">
+    <div class="layer-blur"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">SR</h1>
+
+
+            <nav>
+                <a href="">company name</a>
+                <a href="">feature</a>
+                <a href="">resources</a>
+                <a href="">docs</a>
+            </nav>
+
+            <button class="btn-signing">submit</button>
+        </header>
+        
+        <main>
+            <div class="content">
+                <div class="tag-box">
+                    <div class="tag">
+                        INTRODUCTION &wedbar;
+                    </div>
+                    <h1>email for <br>
+                    DEVELOPER
+                    </h1>
+                    <p class="description">
+                        I am a person who is positive about every aspect of life, with a deep appreciation for reading, writing, thinking, and dreaming.
+                        I enjoy the beauty of nature, from the sunrise in the morning to the moonlight at night, and find joy in simple pleasures like feeling music on my face or smelling ocean winds.
+                        I like to reflect while looking at clouds or engaging in thought experiments during quiet nights.
+                        I cherish the changing seasons—flowers in spring, rain in summer, leaves in autumn, and snow in winter—and value both solitude and the company of others.
+                    </p>
+                    <div class="buttons">
+                        <a href="#" class="btn-get-started">Documentation</a>
+                        <a href="#" class="btn-signing-main">Get started</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+
+</body>
+
