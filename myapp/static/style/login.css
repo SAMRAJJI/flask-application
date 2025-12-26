@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: seagreen;
+}
+
+.wrapper{
+    width: 420px;
+    background: purple;
+    color: white;
+}
+
+.login-name{
+    text-align: center;
+}
+
+input .input-box{
+    align-items: center;
+}

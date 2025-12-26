@@ -1,9 +1,7 @@
 
-{% extends "base.html" %} 
-{%block title %}login{% endblock %}
-
-{% block content%}
-<h1>this is the login page
+<link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="{{url_for('static', filename='style/login.css')}}">
+<!-- <h1>this is the login page
 </h1>
 <form method="POST">
     <div class="form-group">
@@ -19,6 +17,29 @@
     <br>
     <button type="submit" class="btn btn-primary"> login</button>
     
-</form>
-
-{% endblock %}
+</form> -->
+<body> 
+    <div class="wrapper">
+        <form action="" method="post">
+            <h1 class="login-name"> Login </h1>
+            <div class="input-box">
+                
+                <input type="text" placeholder="Enter your email address" id="email" name="email" >
+                <i class='bx  bx-user'></i> 
+            </div>
+            <div class="input-box">
+                
+                <input type="password" placeholder="Enter the password" id="password" name="password" >
+                <i class='bx  bx-lock'></i> 
+            </div>
+                <div class="remember-forgot">
+                <label > <input type="checkbox"> remember me </label> 
+                <a href="#">Forgot Password</a> 
+            </div> 
+            <button type="submit" class="btn btn-primary">Login</button> 
+            <div class="register-link">
+                <p>Don't have account ?<a href=""> Register </a></p>
+            </div>
+        </form> 
+    </div> 
+</body>
