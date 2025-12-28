@@ -1,3 +1,227 @@
 
 {% extends "base.html" %} 
-{%block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .spline-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .spline-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .hero-overlay {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+    padding: 2rem;
+    max-width: 800px;
+  }
+
+  .hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-tagline {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    font-weight: 300;
+  }
+
+  .hero-buttons .btn {
+    margin: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary-custom {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+  }
+
+  .btn-primary-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  }
+
+  .btn-outline-custom {
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-outline-custom:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: white;
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .features-section {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
+  }
+
+  .feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 50px rgba(102, 126, 234, 0.3);
+    border-color: rgba(102, 126, 234, 0.5);
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .feature-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+
+  .feature-description {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+  }
+
+  .welcome-badge {
+    display: inline-block;
+    background: rgba(102, 126, 234, 0.2);
+    border: 1px solid rgba(102, 126, 234, 0.5);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.2rem;
+    }
+
+    .hero-section {
+      min-height: 80vh;
+    }
+
+    .features-section {
+      padding: 3rem 0;
+    }
+
+    .feature-card {
+      margin-bottom: 2rem;
+    }
+  }
+</style>
+
+<section class="hero-section">
+  <div class="spline-container">
+    <!-- Replace the URL below with your Spline scene URL -->
+    <!-- To get your Spline embed: 1) Publish your scene 2) Click "Export" 3) Select "Embed" 4) Copy the iframe src URL -->
+    <spline-viewer 
+        url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode">
+    </spline-viewer>
+
+  </div>
+
+  <div class="hero-overlay">
+    {% if current_user.is_authenticated %}
+    <div class="welcome-badge">
+      ✨ Welcome back, {{ current_user.email.split('@')[0] }}!
+    </div>
+    {% endif %}
+
+    <h1 class="hero-title">Your App Name</h1>
+    <p class="hero-tagline">Transform your workflow with cutting-edge 3D experiences</p>
+
+    <div class="hero-buttons">
+      {% if current_user.is_authenticated %}
+        <a href="{{ url_for('views.dashboard') }}" class="btn btn-primary-custom btn-lg">Go to Dashboard</a>
+      {% else %}
+        <a href="{{ url_for('auth.login') }}" class="btn btn-primary-custom btn-lg">Login</a>
+        <a href="{{ url_for('auth.sigup') }}" class="btn btn-outline-custom btn-lg">Sign Up</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3 class="feature-title">Lightning Fast</h3>
+          <p class="feature-description">Experience blazing fast performance with our optimized infrastructure designed for scale.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3 class="feature-title">Beautiful Design</h3>
+          <p class="feature-description">Immersive 3D interfaces that combine aesthetics with functionality for an unforgettable experience.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3 class="feature-title">Secure & Private</h3>
+          <p class="feature-description">Your data is protected with enterprise-grade security and privacy-first architecture.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<iframe src="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"></iframe>
+
+{% endblock %}
