@@ -4,36 +4,34 @@
 {% block content %}
 <style>
   .hero-section {
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 3rem;
+  gap: 2rem;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
+  }
+
+  .hero-overlay {
+    color: #ffffff;
+    z-index: 2;
   }
 
   .spline-container {
-    position: absolute;
-    top: 0;
-    left: 0;
+    width: 100%;
+    height: 500px;
+  }
+
+  spline-viewer {
     width: 100%;
     height: 100%;
-    z-index: 1;
   }
 
   .spline-container iframe {
     width: 100%;
     height: 100%;
     border: none;
-  }
-
-  .hero-overlay {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: #ffffff;
-    padding: 2rem;
-    max-width: 800px;
   }
 
   .hero-title {
@@ -160,17 +158,9 @@
     }
   }
 </style>
-
 <section class="hero-section">
-  <div class="spline-container">
-    <!-- Replace the URL below with your Spline scene URL -->
-    <!-- To get your Spline embed: 1) Publish your scene 2) Click "Export" 3) Select "Embed" 4) Copy the iframe src URL -->
-    <spline-viewer 
-        url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode">
-    </spline-viewer>
 
-  </div>
-
+  <!-- LEFT SIDE: CONTENT -->
   <div class="hero-overlay">
     {% if current_user.is_authenticated %}
     <div class="welcome-badge">
@@ -179,18 +169,38 @@
     {% endif %}
 
     <h1 class="hero-title">Your App Name</h1>
-    <p class="hero-tagline">Transform your workflow with cutting-edge 3D experiences</p>
+    <p class="hero-tagline">
+      Transform your workflow with cutting-edge 3D experiences
+    </p>
 
     <div class="hero-buttons">
       {% if current_user.is_authenticated %}
-        <a href="{{ url_for('views.dashboard') }}" class="btn btn-primary-custom btn-lg">Go to Dashboard</a>
+        <a href="{{ url_for('views.dashboard') }}"
+           class="btn btn-primary-custom btn-lg">
+          Go to Dashboard
+        </a>
       {% else %}
-        <a href="{{ url_for('auth.login') }}" class="btn btn-primary-custom btn-lg">Login</a>
-        <a href="{{ url_for('auth.sigup') }}" class="btn btn-outline-custom btn-lg">Sign Up</a>
+        <a href="{{ url_for('auth.login') }}"
+           class="btn btn-primary-custom btn-lg">
+          Login
+        </a>
+        <a href="{{ url_for('auth.sigup') }}"
+           class="btn btn-outline-custom btn-lg">
+          Sign Up
+        </a>
       {% endif %}
     </div>
   </div>
+
+  <!-- RIGHT SIDE: SPLINE -->
+  <div class="spline-container">
+    <spline-viewer
+      url="https://prod.spline.design/RgFZqeR4ifYRHUfU/scene.splinecode">
+    </spline-viewer>
+  </div>
+
 </section>
+
 
 <section class="features-section">
   <div class="container">
@@ -221,7 +231,8 @@
     </div>
   </div>
 </section>
-
-<iframe src="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"></iframe>
+<spline-viewer
+  url="https://prod.spline.design/RgFZqeR4ifYRHUfU/scene.splinecode">
+</spline-viewer>
 
 {% endblock %}
