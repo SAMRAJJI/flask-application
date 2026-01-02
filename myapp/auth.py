@@ -32,8 +32,8 @@ def logout():
     logout_user()
     return redirect(url_for('auth.login'))
 
-@auth.route('/sigin', methods=['GET', 'POST'])
-def sigup():
+@auth.route('/signup', methods=['GET', 'POST'])
+def signup():
     if request.method == 'POST':
         email = request.form.get('email')
         name = request.form.get('username')
@@ -55,9 +55,9 @@ def sigup():
             new_user = User(email=email, name = name, password= generate_password_hash(password, method='pbkdf2:sha256'))
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)
+            login_user(new_user, remember=True)
             flash('account created successfully', category='success')
             return redirect(url_for('views.home'))
 
 
-    return render_template("sigin.html", user = current_user)
+    return render_template("register.html", user = current_user)
