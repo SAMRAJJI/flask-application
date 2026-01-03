@@ -3,15 +3,15 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from flask_login import LoginManager
 from os import path
+from dotenv import load_dotenv
+
 
 db = SQLAlchemy()
-
-DB_URI= os.getenv('DB_URI_URL')
-
+load_dotenv()  
 def create_app():
     app= Flask(__name__)
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-    app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
         "pool_pre_ping": True,
