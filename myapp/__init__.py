@@ -6,11 +6,11 @@ from os import path
 
 db = SQLAlchemy()
 
-DB_URI= 'postgresql://neondb_owner:npg_kehtJmr3vTG1@ep-still-term-ahqmmfs2-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+DB_URI= os.getenv('DB_URI_URL')
 
 def create_app():
     app= Flask(__name__)
-    app.config['SECRET_KEY'] = 'SHDFJKLHAFBGFJACHKASDUFOEWhrtiyrhfrifhflakflierh'
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
     app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
