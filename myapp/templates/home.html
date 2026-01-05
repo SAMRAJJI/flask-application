@@ -38,26 +38,16 @@
       {% endif %}
     </div>
   </div>
+  <a href="{{ url_for('views.blogs') }}" class="btn btn-outline-custom">
+  Blogs
+  </a>
+
 
   <!-- RIGHT SIDE: SPLINE -->
   <div class="spline-container">
     <spline-viewer
       url="https://prod.spline.design/RgFZqeR4ifYRHUfU/scene.splinecode">
     </spline-viewer>
-  </div>
-
-  
-</section>
-<button id="chat-toggle">💬</button>
-  <!-- Chat Window -->
-  <div id="chat-box">
-      <div id="chat-header">Chatbot</div>
-      <div id="chat-messages"></div>
-
-      <div id="chat-input">
-          <input id="msg" type="text" placeholder="Type a message">
-          <button onclick="send()">➤</button>
-      </div>
   </div>
 
 
