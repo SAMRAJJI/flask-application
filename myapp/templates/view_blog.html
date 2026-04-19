@@ -1,11 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/blogs.css') }}">
 
-<h2>{{ post.title }}</h2>
-<p>{{ post.content }}</p>
+<div class="view-blog-container">
+  <div class="view-blog-card">
+    <div class="view-post-header">
+      <div class="view-author-info">
+        <div class="view-author-avatar">
+          {{ post.author.name[0].upper() }}
+        </div>
+        <div class="view-author-details">
+          <h3>{{ post.author.name }}</h3>
+          <div class="view-post-date">{{ post.created_at.strftime('%B %d, %Y at %I:%M %p') }}</div>
+        </div>
+      </div>
+    </div>
 
-{% if current_user.id == post.user_id %}
-  <a href="{{ url_for('views.delete_blog', id=post.id) }}">🗑 Delete</a>
-{% endif %}
+    <div class="view-post-content">
+      <h1 class="view-post-title">{{ post.title }}</h1>
+      <div class="view-post-body">{{ post.content }}</div>
+    </div>
+
+    <div class="view-post-actions">
+      <div>
+        <button class="view-action-btn like-btn">❤️ Like</button>
+        <button class="view-action-btn comment-btn">💬 Comment</button>
+        <button class="view-action-btn share-btn">📤 Share</button>
+      </div>
+      {% if current_user.id == post.user_id %}
+        <a href="{{ url_for('views.delete_blog', id=post.id) }}" class="view-action-btn delete-btn" onclick="return confirm('Are you sure you want to delete this post?')">🗑️ Delete</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
 
 {% endblock %}

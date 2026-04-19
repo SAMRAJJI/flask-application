@@ -1,19 +1,48 @@
 {% extends "base.html" %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/blogs.css') }}">
 
-<h2>All Blogs</h2>
+<div class="blogs-container">
+  <a href="{{ url_for('views.add_blog') }}" class="create-post-btn">✏️ Create New Post</a>
 
-<a href="{{ url_for('views.add_blog') }}">➕ Add Blog</a>
-<hr>
+  {% if posts %}
+    {% for post in posts %}
+      <div class="blog-post-card">
+        <div class="post-header">
+          <div class="author-avatar">
+            {{ post.author.name[0].upper() }}
+          </div>
+          <div class="author-info">
+            <h4>{{ post.author.name }}</h4>
+            <span class="post-date">{{ post.created_at.strftime('%b %d, %Y') }}</span>
+          </div>
+        </div>
 
-{% for post in posts %}
-  <h3>
-    <a href="{{ url_for('views.view_blog', id=post.id) }}">
-      {{ post.title }}
-    </a>
-  </h3>
-  <small>Posted on {{ post.created_at.strftime('%d %b %Y') }}</small>
-  <hr>
-{% endfor %}
+        <div class="post-content">
+          <div class="post-title">
+            <a href="{{ url_for('views.view_blog', id=post.id) }}">{{ post.title }}</a>
+          </div>
+          <div class="post-excerpt">
+            {{ post.content[:150] }}{% if post.content|length > 150 %}...{% endif %}
+          </div>
+          <a href="{{ url_for('views.view_blog', id=post.id) }}" class="read-more">Read more</a>
+        </div>
+
+        <div class="post-actions">
+          <div>
+            <button class="action-btn like-btn">❤️ Like</button>
+            <button class="action-btn comment-btn">💬 Comment</button>
+          </div>
+          <button class="action-btn share-btn">📤 Share</button>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="no-posts">
+      <h3>No blog posts yet</h3>
+      <p>Be the first to share your thoughts!</p>
+    </div>
+  {% endif %}
+</div>
 
 {% endblock %}
